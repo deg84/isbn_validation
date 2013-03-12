@@ -34,7 +34,6 @@ module ValidationExtensions
 
     class IsbnFormatValidator < ActiveModel::EachValidator
       def initialize(options)
-        options[:message]     ||= "is not a valid ISBN code"
         options[:allow_nil]   ||= false
         options[:allow_blank] ||= false
         super(options)
@@ -51,7 +50,7 @@ module ValidationExtensions
                      end
 
         unless valid_isbn || (value.nil? && options[:allow_nil]) || (value.blank? && options[:allow_blank])
-          record.errors.add(attribute, options[:message])
+          record.errors.add(attribute, :invalid_isbn, options)
         end
       end
 

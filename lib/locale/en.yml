@@ -1,0 +1,4 @@
+en:
+  errors: &errors
+    messages:
+      invalid_isbn: "is not a valid ISBN code"
